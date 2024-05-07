@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>digital clock</title>
+    <style>
+        body{
+            background: linear-gradient(to right,darkblue,aqua);
+        }
+
+        .a span{
+            color: white;
+            font-size: 40px;
+        }
+
+        .z{
+            border: 3px solid white;
+            display: inline-block;
+            padding: 15px;
+            margin: 250px 0px 0px 530px ;
+            background-color:rgba(0,0,0,0.2);
+        }
+
+        @media(max-width:850px){
+            .z{
+                margin-left: 35px;
+                margin-top: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+  <div class="z">
+    <div class="a">
+        <span id="a">00</span>
+        <span>:</span>
+        <span id="b">00</span>
+        <span>:</span>
+        <span id="c">00</span>
+        <span id="ampm">AM</span>
+    </div>
+  </div>
+
+
+    <script>
+  
+        function karthik(){
+            let date= new Date();
+            let hr=date.getHours();
+            let min=date.getMinutes();
+            let sec=date.getSeconds();
+
+            document.getElementById("a").innerHTML=padzero(hr);
+            document.getElementById("b").innerHTML=padzero(min);
+            document.getElementById("c").innerHTML=padzero(sec);
+
+            if(hr>12){
+                hr=hr-12;
+                let ampm=document.getElementById("ampm"); 
+                ampm.innerHTML="PM";
+            }
+
+        }
+        setInterval(karthik,500);
+
+
+        function padzero(num){
+            return num<10?"0"+num:num;
+        }
+        
+    </script>
+    
+</body>
+</html>

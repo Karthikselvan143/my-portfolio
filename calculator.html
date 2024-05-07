@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        body{
+        background-color:rgb(223, 129, 96);
+        }
+
+        .a{
+            border: 2px solid rgb(43, 42, 42);
+            box-shadow: 8px 8px 30px rgb(65, 62, 62),-8px -8px 30px  rgb(65, 62, 62);
+            background-color:gray;
+            width: 230px;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 130px 0px 0px 500px;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(6,40px);
+            gap: 20px;
+            grid-template-areas:
+            "sr sr sr sr"
+            "b1 b2 b3 b4"
+            "b5 b6 b7 b8"
+            "b9 b10 b11 b12"
+            "b13 b14 b15 b16"
+            "b17 b18 b19 b19";
+        }
+
+        #a{
+            grid-area: sr;
+            border-radius: 5px;
+            border: none;
+            padding: 7px;
+            direction: rtl;
+            background-color:rgb(243, 225, 218);
+            font-size: 19px;
+            box-shadow: 4px 4px 10px black;
+        }
+        #a:focus{
+            outline: none;
+            background-color:rgb(235, 158, 130);   
+        }
+
+        #t{
+            grid-area: b19 ;
+        }
+
+        button{
+            border-radius:13px;
+            font-size: 17px;
+            padding: 5px;
+            border: none;
+            background-color:rgb(243, 225, 218);
+            box-shadow: 4px 4px 10px black;
+        }
+        button:hover{
+            background-color:rgb(235, 158, 130);  
+        } 
+        
+        @media(max-width:800px){
+            .a{
+               margin-left: 30px;
+               margin-top: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 04.01 -->
+
+     <div class="a">
+        <input type="text" placeholder="0" id="a">
+        <button id="b" onclick="Clear()">cl</button>
+        <button id="c" onclick="deloutput()">del</button>
+        <button id="d" onclick="display('%')">%</button>
+        <button id="e" onclick="display('/')">/</button>
+        <button id="f" onclick="display('7')">7</button>
+        <button id="g" onclick="display('8')">8</button>
+        <button id="h" onclick="display('9')">9</button>
+        <button id="i" onclick="display('*')">*</button>
+        <button id="j" onclick="display('6')">6</button>
+        <button id="k" onclick="display('5')">5</button>
+        <button id="l" onclick="display('4')">4</button>
+        <button id="m" onclick="display('+')">+</button>
+        <button id="n" onclick="display('3')">3</button>
+        <button id="o" onclick="display('2')">2</button>
+        <button id="p" onclick="display('1')">1</button>
+        <button id="q" onclick="display('-')">-</button>
+        <button id="r" onclick="display('.')">.</button>
+        <button id="s" onclick="display('0')">0</button>
+        <button id="t" onclick="calculate()">=</button>
+    </div>
+
+
+
+    <script>
+        let output=document.querySelector("input");
+
+        function Clear(){
+            output.value= ""
+        }
+
+        function display(number){
+            output.value+=number;
+        }
+
+        function calculate(){
+            output.value=eval(output.value);
+        }
+
+        function deloutput(){
+            output.value=output.value.slice(0,-1);
+        }
+
+    </script>
+
+</body>
+</html>

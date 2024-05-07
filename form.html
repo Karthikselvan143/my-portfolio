@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+    <style>
+        body{
+            background-image: url(./images/back.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 700px;
+            font-family: cursive;
+        }
+
+        /* .a img{
+            width: 100px;
+            height: 102px;
+            position: absolute;
+            top: 20px;
+            left: 530px;
+        } */
+
+        .a{
+            background-color:bisque;
+            width: 330px;
+            height: 490px;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 70px 0px 0px 400px;
+        }
+
+        .a form{
+            margin-left: 30px;
+        }
+
+        .a h1{
+            margin-top: 50px;
+            text-align: center;
+            text-transform: capitalize;
+            font-size: 35px;
+            color:rgb(252, 226, 226);
+            text-shadow: 4px 4px 15px magenta,4px 4px 15px darkmagenta;
+
+        }
+
+        .a form label{
+            display: block;
+            margin-top: 10px;
+            font-size: 20px;
+            text-transform: capitalize;
+            
+        }
+       
+        .a form input{
+            margin-top: 5px;
+            width: 85%;
+            padding: 6px;
+            border: none;
+            font-size: 17px;
+            border-radius: 5px;
+            background-color: aliceblue;
+        }
+        .a form input:focus{
+            background-color: rgb(241, 188, 118);
+            outline: none;
+        }
+
+        .a input[type="submit"]{
+            margin:15px 0px 0px 20px;
+            padding: 10px;
+            width: 100px;
+            border: none;
+            border-radius: 10px;
+            background-color: blue;
+            color: white;
+            font-weight: bold;
+            font-size: 17px;
+        }
+        .a input[type="submit"]:hover{
+            background-color: darkblue;
+            cursor: pointer;
+        }
+
+        .a form #result{
+            margin-top: 10px;
+            color: red;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 17px;
+            font-weight: bold;
+        } 
+
+        @media(max-width:800px){
+            .a{
+                margin-left: 1px;
+                margin-top: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="a">
+        <!-- <img src="./images/user image.png"> -->
+        <h1>login form</h1>
+    <form action="./form.php" method="post">
+        <label for="uname">username:</label>
+        <input type="text" id="uname" name="uname" placeholder="Enter username" required>
+        <label for="email">email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter email" required>
+        <label for="pw">password:</label>
+        <input type="password" id="pw" name="pw" placeholder="Enter password" required>
+        <label for="cp">conform password:</label>
+        <input type="password" id="cp" name="cp" placeholder="Conform password" required>
+        <div id="result">
+
+        </div>
+        <input type="Submit" id="z" name="sub">
+        <input type="submit" value="Delete" id="z" name="del">
+    </form> 
+</div>
+
+
+
+<script>
+    let button=document.querySelector("button");
+    button.addEventListener("click",karthik);
+
+    function karthik(){
+        let uname=document.getElementById("uname").value;
+        let email=document.getElementById("email").value;
+        let pw=document.getElementById("pw").value;
+        let cp=document.getElementById("cp").value;
+
+        let result=document.createElement("div");
+        result.id="result";
+        document.querySelector("form").appendChild(result);
+
+        if(uname=="" || uname==null){
+            document.getElementById("result").innerHTML="*please enter the username*";
+            return false;
+        }
+        if(email=="" || email==null){
+            document.getElementById("result").innerHTML="*please enter the email*";
+            return false;
+        }
+        if(pw=="" || pw==null){
+            document.getElementById("result").innerHTML="*please enter the password*"
+            return false;
+        }
+        if(cp=="" || cp==null){
+            document.getElementById("result").innerHTML="*please enter the conform password*";
+            return false;
+        }
+        if(pw!=cp){
+            document.getElementById("result").innerHTML="*Dont match the password*";
+            return false;
+        }
+
+        if(uname!="" && email!="" && pw!="" && cp!=""){
+            alert("Login Successfully");
+        }
+    }
+ 
+    
+</script> 
+
+
+
+    
+</body>
+</html>
